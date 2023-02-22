@@ -1,8 +1,5 @@
 import csv
 import re
-
-import csv
-import re
 from typing import List
 
 
@@ -67,6 +64,27 @@ def add_emails_to_csv(emails: List[str]) -> None:
     print(f"Программа закончена. Было внесено {len(valid_emails)} email")
 
 
-# Пример использования функции
-emails = ["xisove6264@aosod.com"]
-add_emails_to_csv(emails)
+def remove_emails_from_csv(emails: List[str]) -> None:
+    """
+    Функция удаляет email из csv файла, если он существует в файле.
+
+    Args:
+        emails (List[str]): Список email для удаления из csv файла.
+
+    Returns:
+        None
+    """
+    # Считываем все email из csv файла
+    with open("emails.csv", "r") as csvfile:
+        reader = csv.reader(csvfile)
+        existing_emails = [row[0] for row in reader]
+
+    # Создаем новый csv файл, исключая удаляемые email
+    with open("emails.csv", "w", newline="") as csvfile:
+        writer = csv.writer(csvfile)
+        for email in existing_emails:
+            if email not in emails:
+                writer.writerow([email])
+
+
+remove_emails_from_csv(['xfsafasfasdfasdf@gmail.com',"xfsafas@gmail.com"])
