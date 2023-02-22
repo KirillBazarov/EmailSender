@@ -43,6 +43,7 @@ def add_emails_to_csv(emails: List[str]) -> None:
 
     for email in emails:
         if email in existing_emails:
+            print("-" * 20)
             print(f"Email {email} уже существует в файле.")
             continue
 
@@ -59,13 +60,13 @@ def add_emails_to_csv(emails: List[str]) -> None:
 
     # Выводим список неподходящих email
     if invalid_emails:
-        print("-" * 50)
-        print("Неподходящие email:")
         for email in invalid_emails:
-            print(email)
-        print("-" * 50)
+            print("!" * 20)
+            print(f"Неподходящие email:{email}")
+    print("-" * 20)
+    print(f"Программа закончена. Было внесено {len(valid_emails)} email")
 
 
 # Пример использования функции
-emails = ["", ""]
+emails = ["xisove6264@aosod.com"]
 add_emails_to_csv(emails)
